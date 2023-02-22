@@ -1,5 +1,5 @@
 <?php
-require 'view/header.php'; ?>
+require 'views/layout/header.php'; ?>
 
 <form action='' method="POST">
     <div class="row">
@@ -96,4 +96,4 @@ require 'view/header.php'; ?>
     <button type="submit">Registreer</button>
 </form>
 
-<?php require 'view/components/footer.php'; ?>
+<?php require 'views/layout/footer.php'; ?>
