@@ -2,7 +2,9 @@
 $title = 'Registration';
 
 require 'views/layout/header.php'; ?>
-
+<body>
+    <form action="">
+        <div class="d-flex justify-content-center row mt-5">
             <div class="form-group  col-8 py-1">
                 <input type="text" class="form-control" placeholder="Enter Username" name="uname" required>
             </div>
