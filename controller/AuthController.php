@@ -1,24 +1,26 @@
 <?php
 
-class MainController
+require_once './models/Auth.php';
+
+class AuthController
 {
     public function __construct()
     {
-
+        $this->Auth = new Auth();
     }
+
     public function __destruct()
     {
     }
+
     public function handleRequest()
     {
         try {
 
-            $controller = isset($_GET['con']) ? $_GET['con'] : 'content';
+            $action = isset($_GET['op']) ? $_GET['op'] : 'index';
 
-            switch ($controller) {
-                case 'auth':
-                    $this->AuthController->handleRequest();
-                    break;
+            switch ($action) {
+
                 default:
                     http_response_code(404);
                     break;
@@ -27,4 +29,5 @@ class MainController
             throw $e;
         }
     }
+
 }
