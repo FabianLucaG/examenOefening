@@ -22,12 +22,17 @@ class AuthController
             switch ($action) {
 
                 default:
-                    http_response_code(404);
-                    break;
+                    // http_response_code(404);
+                    $this->getStuff();
+                    // break;
             }
         } catch (Exception $e) {
             throw $e;
         }
+    }
+
+    public function getStuff() {
+        echo $this->Auth->getStuffFromDb();
     }
 
 }
