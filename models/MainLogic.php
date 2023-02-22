@@ -1,5 +1,6 @@
 <?php
 require_once 'DataHandler.php';
+require_once 'Functions.php';
 
 class MainLogic extends DataHandler
 {
