@@ -20,6 +20,9 @@ class AuthController
             $action = isset($_GET['op']) ? $_GET['op'] : 'index';
 
             switch ($action) {
+                case 'index':
+                    $this->login();
+                    break;
 
                 default:
                     http_response_code(404);
@@ -28,6 +31,11 @@ class AuthController
         } catch (Exception $e) {
             throw $e;
         }
+    }
+
+    public function login()
+    {
+        include 'views/pages/login.php';
     }
 
 }
