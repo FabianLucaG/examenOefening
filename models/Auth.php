@@ -4,12 +4,29 @@ require_once 'MainLogic.php';
 
 class Auth extends MainLogic
 {
-    public function getStuffFromDb() {
-        $dump = self::readsData('SELECT * FROM `users`');
+    public function login($email, $password)
+    {
+        try {
+            $password = Functions::encrypt($password);
 
-        $dump = $dump->fetchAll(PDO::FETCH_ASSOC);
+            $sql = "SELECT * FROM `users` WHERE user_email = '{$email}' AND user_password = '{$password}'";
+            $result = self::readData($sql);
+            $result = $result->fetch(PDO::FETCH_ASSOC);
 
-        return var_dump($dump);
+            echo var_dump($result);
+
+            if (!$result) {
+                return false;
+            } else {
+                $_SESSION["user"] = [
+                    'id' => $result->id,
+                    'role_id' => $result->role_id
+                ];
+                return true;
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 
 }
