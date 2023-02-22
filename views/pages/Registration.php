@@ -1,4 +1,6 @@
 <?php
+$title = 'Registration';
+
 require 'views/layout/header.php'; ?>
 
 <form action='' method="POST">
@@ -70,8 +72,7 @@ require 'views/layout/header.php'; ?>
         </div>
 
         <div class="col-6">
-            <input type="tel" placeholder="Enter Username" name="lname" style="width: 50%;" required
-                pattern="[0-9]{2}-[0-9]{8}">
+            <input type="tel" placeholder="Enter Username" name="lname" style="width: 50%;" required pattern="[0-9]{2}-[0-9]{8}">
         </div>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
