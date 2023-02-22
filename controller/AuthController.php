@@ -40,10 +40,10 @@ class AuthController
 
     public function login()
     {
-        // include 'views/pages/login.php';
+        include 'views/pages/login.php';
 
-        var_dump($this->Auth->getStuffFromDb());
-        
+        //var_dump($this->Auth->getStuffFromDb());
+
     }
 
     public function registration()
