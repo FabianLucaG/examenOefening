@@ -24,6 +24,10 @@ class AuthController
                     $this->login();
                     break;
 
+                    case 'registration':
+                        $this->registration();
+                        break;
+
                 default:
                     // http_response_code(404);
                     $this->getStuff();
@@ -41,6 +45,11 @@ class AuthController
     public function login()
     {
         include 'views/pages/login.php';
+    }
+
+    public function registration()
+    {
+        include './views/pages/Registration.php';
     }
 
 }
