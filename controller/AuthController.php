@@ -24,32 +24,30 @@ class AuthController
                     $this->login();
                     break;
 
-                    case 'registration':
-                        $this->registration();
-                        break;
+                case 'registration':
+                    $this->registration();
+                    break;
 
                 default:
-                    // http_response_code(404);
-                    $this->getStuff();
-                    // break;
+                    http_response_code(404);
+                    break;
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
 
-    public function getStuff() {
-        echo $this->Auth->getStuffFromDb();
-    }
 
     public function login()
     {
-        include 'views/pages/login.php';
+        // include 'views/pages/login.php';
+
+        var_dump($this->Auth->getStuffFromDb());
+        
     }
 
     public function registration()
     {
         include './views/pages/Registration.php';
     }
-
 }
