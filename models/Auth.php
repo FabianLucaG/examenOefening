@@ -9,11 +9,13 @@ class Auth extends MainLogic
         try {
             $password = Functions::encrypt($password);
 
-            $sql = "SELECT * FROM `users` WHERE user_email = '{$email}' AND user_password = '{$password}'";
+            $sql = "SELECT * FROM `users` WHERE email = '{$email}' AND password = '{$password}'";
             $result = self::readData($sql);
             $result = $result->fetch(PDO::FETCH_ASSOC);
 
-            echo var_dump($result);
+//            echo print_r($result);
+
+            echo $result;
 
             if (!$result) {
                 return false;

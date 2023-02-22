@@ -17,10 +17,10 @@ class AuthController
     {
         try {
 
-            $action = isset($_GET['op']) ? $_GET['op'] : 'index';
+            $action = isset($_GET['op']) ? $_GET['op'] : 'login';
 
             switch ($action) {
-                case 'index':
+                case 'login':
                     $this->login();
                     break;
 
@@ -30,7 +30,6 @@ class AuthController
 
                 default:
                     http_response_code(404);
-                    $this->getStuff();
                     break;
             }
         } catch (Exception $e) {
@@ -38,12 +37,15 @@ class AuthController
         }
     }
 
-    public function getStuff() {
-        echo $this->Auth->getStuffFromDb();
-    }
-
     public function login()
     {
+        if(!empty($_POST)) {
+            $result = $this->Auth->login($_POST['password'], $_POST['email']);
+            if ($result) {
+//                header('Location: /welcome');
+                exit();
+            }
+        }
         include 'views/pages/login.php';
     }
 
