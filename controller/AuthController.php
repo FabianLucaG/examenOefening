@@ -27,6 +27,9 @@ class AuthController
                 case 'registration':
                     $this->registration();
                     break;
+                case 'forgot':
+                    $this->forgotPassword();
+                    break;
 
                 default:
                     http_response_code(404);
@@ -49,5 +52,10 @@ class AuthController
     public function registration()
     {
         include './views/pages/Registration.php';
+    }
+
+    public function forgotPassword()
+    {
+        include './views/pages/Forgot.php';
     }
 }
