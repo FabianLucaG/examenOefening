@@ -24,15 +24,13 @@ class AuthController
                     $this->login();
                     break;
 
-                case 'registration':
-                    $this->registration();
-                    break;
-                case 'forgot':
-                    $this->forgotPassword();
-                    break;
+                    case 'registration':
+                        $this->registration();
+                        break;
 
                 default:
                     http_response_code(404);
+                    $this->getStuff();
                     break;
             }
         } catch (Exception $e) {
@@ -40,22 +38,26 @@ class AuthController
         }
     }
 
+    public function getStuff() {
+        echo $this->Auth->getStuffFromDb();
+    }
 
     public function login()
     {
         include 'views/pages/login.php';
-
-        //var_dump($this->Auth->getStuffFromDb());
-
     }
 
     public function registration()
     {
+        if(isset($_POST)) {
+            $result = $this->Auth->login($_POST['password'], $_POST['email']);
+            if ($result) {
+                header('Location: /welcome');
+                exit();
+            }
+        }
+
         include './views/pages/Registration.php';
     }
 
-    public function forgotPassword()
-    {
-        include './views/pages/Forgot.php';
-    }
 }
