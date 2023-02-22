@@ -49,14 +49,6 @@ class AuthController
 
     public function registration()
     {
-        if(isset($_POST)) {
-            $result = $this->Auth->login($_POST['password'], $_POST['email']);
-            if ($result) {
-                header('Location: /welcome');
-                exit();
-            }
-        }
-
         include './views/pages/Registration.php';
     }
 
